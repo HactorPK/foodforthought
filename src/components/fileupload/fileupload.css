@@ -1,0 +1,73 @@
+.image-upload-container {
+    padding: 0;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(242, 242, 242, 0.44);
+    width: 769px;
+    margin-left: 30px;
+    height: min-content;
+}
+
+.container-header {
+    margin-top: 0;
+    margin: 0;
+    background-color: #D9D9D9;
+    display: flex;
+    width: 809px;
+    justify-content: center;
+}
+
+.chooseImg-btn {
+    width: 500px;
+    height: 60px;
+    border-style: dashed;
+    background: none;
+}
+
+.upload-text {
+    font-weight: bold;
+    font-size: large;
+    color: rgba(0, 0, 0, 0.59)
+}
+
+.uploaded-image-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.uploaded-image-item {
+    flex: 1;
+    max-width: calc(33..33% -10px);
+    position: relative;
+}
+
+.uploaded-image {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px;
+}
+
+.cancel-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+/* Styling for the "Choose Image" button */
+.submit-btn {
+    margin-top: 20px;
+    background-color: #35B2E8;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
