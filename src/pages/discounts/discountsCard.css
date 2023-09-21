@@ -31,7 +31,8 @@
     padding-left: 20px;
     padding-top: 20px;
 }
-p{
+
+p {
     color: white;
 }
 
@@ -44,7 +45,7 @@ img {
     /* You can change the color */
     color: white;
     display: flex;
-    justify-content:flex-end;
+    justify-content: flex-end;
     margin-right: 20px;
     margin-bottom: 20px;
 }

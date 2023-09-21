@@ -9,7 +9,7 @@ def jsonify(recipe_name):
     Args:
         Places recipe data into a json
 
-    Returns:
+    Returns:s
         _type_: _description_
     """
     # Load the Excel file into a pandas DataFrame
@@ -20,7 +20,6 @@ def jsonify(recipe_name):
 
     if recipe_data.empty:
         return None  # Recipe not found
-
     # Convert the matched row to a dictionary
     recipe_dict = recipe_data.iloc[0].to_dict()
 
@@ -35,14 +34,14 @@ def jsonify(recipe_name):
     }
 
     # Check if an image with the same name exists in the local folder
-    image_filename = f"images/{recipe_name}.jpg"  # Assuming the images are in JPG format
+    image_filename = f"./recipe_images/{recipe_name}.jpg"  # Assuming the images are in JPG format
+    print('image_filename is ' + image_filename)
     if os.path.isfile(image_filename):
             json_result["Image"] = image_filename
     else:
          json_result["Image"] ="images/default"
 
     return json_result
-
 
 def find_recipe_info(recipes):
     """Takes in a list of recipes and returns all them in a json format, with each recipe having it's own data
@@ -60,4 +59,4 @@ def find_recipe_info(recipes):
 
 recipes = ['Apple Salad', 'Apple Grape Salad', 'Fruit Salad with Apricot Dressing']
 
-print(find_recipe_info(recipes))
+# print(find_recipe_info(recipes))

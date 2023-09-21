@@ -3,8 +3,32 @@ import DishGrid from "./dishesGrid.jsx";
 import IMAGES from "../images";
 import Header from "../header/header.jsx";
 import "./dishes.css";
+import { useLocation } from "react-router-dom";
+const reformatResponseData = (responseData) => {
+  const reformattedDishes = [];
+  for (const key in responseData) {
+    if (responseData.hasOwnProperty(key)) {
+      const dishData = responseData[key];
+      const reformattedDish = {
+        name: dishData.name,
+        category: dishData.category,
+        healthRating: dishData.healthRating,
+        totalCookTime: parseInt(dishData.totalCookTime),
+        ingredients: dishData.ingredients,
+        imageSrc: dishData.Image, // Assuming 'Image' field holds the image source
+      };
+      reformattedDishes.push(reformattedDish);
+    }
+  }
+
+  return reformattedDishes;
+};
 
 const Dishes = () => {
+  const location = useLocation();
+  const receivedData = location.state && location.state.data;
+  const reformattedData = reformatResponseData(receivedData);
+
   const sampleDishes = [
     {
       name: "Spaghetti Carbonara",
@@ -89,7 +113,7 @@ const Dishes = () => {
             These are the recipes you could use, get cooking!
           </p>
         </div>
-        <DishGrid dishes={sampleDishes} />
+        <DishGrid dishes={reformattedData} />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 .container-div{
     background-color: rgb(211, 211, 211);
 }
+
 .dish-card {
     display: flex;
     justify-content: center;

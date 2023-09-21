@@ -14,8 +14,8 @@ def main():
     print("=" * 20)
 
 def make_prediction(user_input):
-    model_save_path = './recipe_model.joblib'
-    vectorizer_save_path = './tfidf_vectorizer.joblib'
+    model_save_path = 'backend/recipe_model.joblib'
+    vectorizer_save_path = 'backend/tfidf_vectorizer.joblib'
 
     # Make predictions using the saved model and vectorizer
     recipe_predicted = model.predict_category(user_input, model_save_path, vectorizer_save_path, N=3)

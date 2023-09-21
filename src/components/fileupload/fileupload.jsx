@@ -1,13 +1,16 @@
 import React, { useState, useRef } from "react";
 import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 import "./fileupload.css";
 
 const ImageUpload = () => {
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [responseData, setResponseData] = useState(null);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -59,7 +62,7 @@ const ImageUpload = () => {
     images.forEach((image, index) => {
       formData.append(`images`, image.file);
     });
-    
+
     fetch("http://localhost:5000/process_images", {
       method: "POST",
       body: formData,
@@ -68,6 +71,8 @@ const ImageUpload = () => {
       .then((data) => {
         if (data.success) {
           // Handle the results from the server here
+          setResponseData(data.results);
+          navigate("/recipes", { state: { data: data.results } });
           console.log(data.results);
         } else {
           console.error(data.error);
@@ -132,6 +137,13 @@ const ImageUpload = () => {
       <button className="submit-btn" onClick={() => handleSubmit()}>
         Submit
       </button>
+
+      {/* {responseData && (
+        <div>
+          <p>Received Data: </p>
+          <pre>{JSON.stringify(responseData, null, 2)}</pre>
+        </div>
+      )} */}
     </div>
   );
 };
