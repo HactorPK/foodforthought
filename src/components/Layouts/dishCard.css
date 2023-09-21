@@ -1,0 +1,55 @@
+.container-div{
+    background-color: rgb(211, 211, 211);
+}
+.dish-card {
+    display: flex;
+    justify-content: center;
+    width: 650px;
+    height: 284px;
+    margin-bottom: 50px;
+
+}
+
+.dish-image {
+    width: 316px;
+    height: 100%;
+}
+
+.image {
+    object-fit:cover;
+    width: 100%;
+    height: 100%;
+}
+
+.dish-info {
+    display: flex;
+    flex-direction: column;
+    width: 425px;
+    justify-content: space-between;
+    background-color: rgba(115, 141, 141, 0.863);
+    padding-left: 20px;
+    padding-top: 20px;
+}
+p{
+    color: white;
+}
+.button-wrap {
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.next-button {
+    background-color: #CCCCCC;
+    border-radius: 5px;
+    align-items: center;
+    font-size: large;
+    font-weight: 600;
+    border: 1px solid gray;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.next-button:hover{
+    cursor: pointer;
+}

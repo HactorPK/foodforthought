@@ -1,0 +1,11 @@
+.discount-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    /* Adjust 300px to your preferred card width */
+    column-gap: 20px;
+}
+
+.discount-card-wrapper {
+    width: 100%;
+    /* Add margin around each card */
+}

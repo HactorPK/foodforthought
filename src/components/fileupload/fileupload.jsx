@@ -50,11 +50,34 @@ const ImageUpload = () => {
     });
   };
   const handleSubmit = () => {
-    if (images.length == 0) {
-      console.log("nothing is there");
+    if (images.length === 0) {
+      console.log("Nothing is there");
+      return;
     }
-    console.log("submitted images");
+
+    const formData = new FormData();
+    images.forEach((image, index) => {
+      formData.append(`images`, image.file);
+    });
+    
+    fetch("http://localhost:5000/process_images", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // Handle the results from the server here
+          console.log(data.results);
+        } else {
+          console.error(data.error);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
+
   return (
     <div
       className="image-upload-container"
@@ -93,6 +116,7 @@ const ImageUpload = () => {
 
       <input
         type="file"
+        name="images[]"
         accept="image/*"
         onChange={handleImageChange}
         style={{ display: "none" }}

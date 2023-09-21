@@ -17,57 +17,56 @@ function LandingPage() {
   return (
     <div>
       <Header />
-      <div className="landing-content">
-        <div className="image-container">
-          <img src={IMAGES.ingredients} className="image" />
-        </div>
-        <div className="content">
-          <div className="title">
-            <p className="title-text">{title}</p>
-          </div>
-          <div className="subtext">
-            <p className="subtext-text">{text}</p>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="user-input">
-          <div className="info-tag-one">
-            <div className="idea-icon-container">
-              <FontAwesomeIcon icon={faLightbulb} className="idea-icon">
-                {" "}
-              </FontAwesomeIcon>
+      <div className="container-div">
+        <div className="landing-content">
+          <div className="content">
+            <div className="title">
+              <p className="title-text">{title}</p>
             </div>
-            <div className="type-ingredients">
-              <p className="typeIngredients-text">{typeIngredients}</p>
+            <div className="subtext">
+              <p className="subtext-text">{text}</p>
             </div>
           </div>
+        </div>
+        <div className="container">
+          <div className="user-input">
+            <div className="info-tag-one">
+              <div className="idea-icon-container">
+                <FontAwesomeIcon icon={faLightbulb} className="idea-icon">
+                  {" "}
+                </FontAwesomeIcon>
+              </div>
+              <div className="type-ingredients">
+                <p className="typeIngredients-text">{typeIngredients}</p>
+              </div>
+            </div>
 
-          <input
-            className="resizable-text"
-            type="text"
-            placeholder="write ingredients..."
-          />
-          <div className="divider">
-            <div className="line"></div>
-            <p className="or-text">OR</p>
-            <div className="line"></div>
-          </div>
-          <br />
-          <div className="info-tag-one">
-            <div className="idea-icon-container">
-              <FontAwesomeIcon icon={faLightbulb} className="idea-icon">
-                {" "}
-              </FontAwesomeIcon>
+            <input
+              className="resizable-text"
+              type="text"
+              placeholder="write ingredients..."
+            />
+            <div className="divider">
+              <div className="line"></div>
+              <p className="or-text">OR</p>
+              <div className="line"></div>
             </div>
-            <div className="type-ingredients">
-              <p className="typeIngredients-text">{uploadImage}</p>
+            <br />
+            <div className="info-tag-one">
+              <div className="idea-icon-container">
+                <FontAwesomeIcon icon={faLightbulb} className="idea-icon">
+                  {" "}
+                </FontAwesomeIcon>
+              </div>
+              <div className="type-ingredients">
+                <p className="typeIngredients-text">{uploadImage}</p>
+              </div>
             </div>
+            <ImageUpload></ImageUpload>
           </div>
-          <ImageUpload></ImageUpload>
-        </div>
-        <div className="image-right">
-          <img src={IMAGES.handDough} alt="" />
+          <div className="image-right">
+            <img src={IMAGES.handDough} alt="" />
+          </div>
         </div>
       </div>
     </div>
