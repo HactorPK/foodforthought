@@ -15,7 +15,7 @@ const reformatResponseData = (responseData) => {
         healthRating: dishData.healthRating,
         totalCookTime: parseInt(dishData.totalCookTime),
         ingredients: dishData.ingredients,
-        imageSrc: dishData.Image, // Assuming 'Image' field holds the image source
+        imageSrc: IMAGES[`${dishData.name}`],
       };
       reformattedDishes.push(reformattedDish);
     }
@@ -103,7 +103,7 @@ const Dishes = () => {
       imageSrc: IMAGES.lasagna,
     },
   ];
-
+  console.log(reformattedData);
   return (
     <div>
       <Header />

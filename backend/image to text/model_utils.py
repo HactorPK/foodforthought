@@ -39,7 +39,7 @@ def jsonify(recipe_name):
     if os.path.isfile(image_filename):
             json_result["Image"] = image_filename
     else:
-         json_result["Image"] ="images/default"
+         json_result["Image"] ="./recipe_images/default.jpg"
 
     return json_result
 
