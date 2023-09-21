@@ -19,7 +19,7 @@ def predict_category(input_text, model_path, vectorizer_path, N=3):
     top_indices = np.argsort(-probabilities)[:N]  # Sort in descending order and get top N indices
     top_categories = [model.classes_[i] for i in top_indices]  # Get recipe labels
 
-    recipedata = model_utils.find_recipe_info(top_categories)
+    recipedata = model_utils.find_recipe_info(top_categories,input_text)
 
     return recipedata
 

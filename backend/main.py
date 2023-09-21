@@ -7,7 +7,7 @@ CORS(app)
 
 
 def main():
-    user_input = "apple banana"
+    user_input = "apple, banana"
 
     # Make predictions using the saved model and vectorizer
     recipes = make_prediction(user_input)

@@ -3,7 +3,7 @@ import os
 import json
 from PIL import Image
 
-def jsonify(recipe_name):
+def jsonify(recipe_name, user_ingredients):
     """_summary_
 
     Args:
@@ -23,15 +23,18 @@ def jsonify(recipe_name):
 
     # Convert the matched row to a dictionary
     recipe_dict = recipe_data.iloc[0].to_dict()
+    missing_ingredients = find_missing_ingredients(user_ingredients,recipe_dict["Ingredients"])
+    print(missing_ingredients)
 
     # Construct the JSON object
     json_result = {
-        "Recipe": recipe_dict["Recipe"],
-        "Ingredients": recipe_dict["Ingredients"],
-        "Instructions": recipe_dict["Instructions"],
-        "Cooking time": recipe_dict["Cooking time"],
-        "Health rating": recipe_dict["Health rating"],
-        "Category": recipe_dict["Category"]
+        "dishName": recipe_dict["Recipe"],
+        "ingredients": recipe_dict["Ingredients"],
+        "instructions": recipe_dict["Instructions"],
+        "cookingTime": recipe_dict["Cooking time"],
+        "healthRating": recipe_dict["Health rating"],
+        "category": recipe_dict["Category"],
+        "missingIngredients": missing_ingredients,
     }
 
     # Check if an image with the same name exists in the local folder
@@ -44,7 +47,7 @@ def jsonify(recipe_name):
     return json_result
 
 
-def find_recipe_info(recipes):
+def find_recipe_info(recipes, user_ingredients):
     """Takes in a list of recipes and returns all them in a json format, with each recipe having it's own data
 
     Args:
@@ -53,11 +56,21 @@ def find_recipe_info(recipes):
     data = {}
     i=1
     for r in recipes:
-        data[i]=jsonify(r)
+        data[i]=jsonify(r, user_ingredients)
         i=i+1   
 
     return data
 
-recipes = ['Apple Salad', 'Apple Grape Salad', 'Fruit Salad with Apricot Dressing']
+def find_missing_ingredients(user_ingredients, full_ingredients):
+    # Split string A and string B into lists of ingredients
+    ingredients_a = [ingredient.strip() for ingredient in full_ingredients.split(',')]
+    ingredients_b = [ingredient.strip() for ingredient in user_ingredients.split(',')]
 
-print(find_recipe_info(recipes))
+    # Create a set of ingredients from string B for efficient lookup
+    ingredients_set_b = set(ingredients_b)
+
+    # Find ingredients in string A but not in string B
+    extra_ingredients = [ingredient for ingredient in ingredients_a if ingredient not in ingredients_set_b]
+
+    return extra_ingredients
+     
