@@ -132,3 +132,10 @@ input {
     object-fit: cover;
     border-radius: 25px;
 }
+
+.or-text{
+    color:rgb(97, 97, 97);
+}
+.line{
+    background-color: rgb(109, 109, 109);
+}

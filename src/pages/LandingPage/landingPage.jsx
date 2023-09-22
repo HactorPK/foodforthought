@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../../header/header";
 import IMAGES from "../../images";
 import "./landingPage.css";
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageUpload from "../../components/fileupload/fileupload";
-
 const title = "Making your life easier, at the tap of a finger!";
 const text =
   "This is how it works, simply upload a picture of your ingredients or write down what ingredients you have and we’ll serve you with three of the best meals you could make with those!";
@@ -14,6 +13,11 @@ const typeIngredients =
 const uploadImage =
   "You can choose to take a picture of the ingredients you have , alternatively, upload an existing image.";
 function LandingPage() {
+  const [textInput, setTextInput] = useState("");
+  const handleTextChange = (e) => {
+    console.log("Text input changed:", e.target.value);
+    setTextInput(e.target.value); // Update the state with the text input
+  };
   return (
     <div>
       <Header />
@@ -45,6 +49,8 @@ function LandingPage() {
               className="resizable-text"
               type="text"
               placeholder="write ingredients..."
+              value={textInput}
+              onChange={handleTextChange}
             />
             <div className="divider">
               <div className="line"></div>
@@ -62,7 +68,7 @@ function LandingPage() {
                 <p className="typeIngredients-text">{uploadImage}</p>
               </div>
             </div>
-            <ImageUpload></ImageUpload>
+            <ImageUpload textInput={textInput} setTextInput={setTextInput}></ImageUpload>
           </div>
           <div className="image-right">
             <img src={IMAGES.handDough} alt="" />

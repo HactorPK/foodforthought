@@ -1,7 +1,7 @@
 import React from "react";
 import "./dishCard.css";
 
-const DishCard = ({ dish }) => {
+const DishCard = ({ dish, onShowInstructions}) => {
   const {
     name,
     category,
@@ -41,7 +41,9 @@ const DishCard = ({ dish }) => {
           </p>
         </div>
         <div className="button-wrap">
-          <button className="next-button">Get Cooking</button>
+          <button className="next-button" onClick={()=>{
+            console.log('clicked')
+            onShowInstructions(dish)}}>Get Cooking</button>
         </div>
       </div>
     </div>

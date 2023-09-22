@@ -16,6 +16,7 @@ const reformatResponseData = (responseData) => {
         totalCookTime: parseInt(dishData.totalCookTime),
         ingredients: dishData.ingredients,
         imageSrc: IMAGES[`${dishData.name}`],
+        cookingInstructions: dishData.cookingInstructions,
       };
       reformattedDishes.push(reformattedDish);
     }
@@ -28,81 +29,6 @@ const Dishes = () => {
   const location = useLocation();
   const receivedData = location.state && location.state.data;
   const reformattedData = reformatResponseData(receivedData);
-
-  const sampleDishes = [
-    {
-      name: "Spaghetti Carbonara",
-      category: "Vegan diet",
-      healthRating: 5,
-      totalCookTime: 30,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.spaghetti,
-    },
-    {
-      name: "Lasagna",
-      category: "Vegetarian diet",
-      healthRating: 4.5,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.lasagna,
-    },
-    {
-      name: "Lasagna",
-      category: "Meat",
-      healthRating: 3,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.handDough,
-    },
-    {
-      name: "Lasagna",
-      category: "Lactose Intolerant",
-      healthRating: 4,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.lasagna,
-    },
-    {
-      name: "Lasagna",
-      category: "Vegan diet",
-      healthRating: 3.7,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.lasagna,
-    },
-    {
-      name: "Lasagna",
-      category: "Meat",
-      healthRating: 4.2,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.lasagna,
-    },
-    {
-      name: "Lasagna",
-      category: "Vegeterian diet",
-      healthRating: 5,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.lasagna,
-    },
-    {
-      name: "Lasagna",
-      category: "Vegeterian diet",
-      healthRating: 3,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.lasagna,
-    },
-    {
-      name: "Lasagna",
-      category: "Vegan diet",
-      healthRating: 5,
-      totalCookTime: 25,
-      ingredients: "Pasta, Eggs, Pancetta, Parmesan, Salt, Pepper",
-      imageSrc: IMAGES.lasagna,
-    },
-  ];
   console.log(reformattedData);
   return (
     <div>

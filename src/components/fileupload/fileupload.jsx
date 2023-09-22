@@ -2,10 +2,9 @@ import React, { useState, useRef } from "react";
 import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-
 import "./fileupload.css";
 
-const ImageUpload = () => {
+const ImageUpload = (props) => {
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [responseData, setResponseData] = useState(null);
@@ -53,7 +52,8 @@ const ImageUpload = () => {
     });
   };
   const handleSubmit = () => {
-    if (images.length === 0) {
+    console.log("Text input:", props.textInput);
+    if (images.length === 0 && !props.textInput) {
       console.log("Nothing is there");
       return;
     }
@@ -62,6 +62,11 @@ const ImageUpload = () => {
     images.forEach((image, index) => {
       formData.append(`images`, image.file);
     });
+
+    // Append text data to the formData
+    if (props.textInput) {
+      formData.append("text_data", props.textInput);
+    }
 
     fetch("http://localhost:5000/process_images", {
       method: "POST",
@@ -137,13 +142,6 @@ const ImageUpload = () => {
       <button className="submit-btn" onClick={() => handleSubmit()}>
         Submit
       </button>
-
-      {/* {responseData && (
-        <div>
-          <p>Received Data: </p>
-          <pre>{JSON.stringify(responseData, null, 2)}</pre>
-        </div>
-      )} */}
     </div>
   );
 };
