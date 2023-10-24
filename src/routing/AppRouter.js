@@ -7,7 +7,7 @@ import Discounts from "../pages/discounts/discounts.jsx";
 function AppRouter() {
   return (
     <Routes>
-      <Route path="/home" element={<LandingPage />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="/recipes" element={<Dishes />} />
       <Route path="/discounts" element={<Discounts />} />
     </Routes>

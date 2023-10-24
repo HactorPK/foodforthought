@@ -1,12 +1,11 @@
 import React from "react";
-import LandingPage from "./pages/LandingPage/landingPage";
-import Dishes from "./pages/dishes";
+import AppRouter from "./routing/AppRouter";
 
 
 function App() {
   return (
     <div className="App">
-      <Dishes/>
+      <AppRouter/>
     </div>
   );
 }

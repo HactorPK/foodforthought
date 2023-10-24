@@ -9,13 +9,14 @@ const reformatResponseData = (responseData) => {
   for (const key in responseData) {
     if (responseData.hasOwnProperty(key)) {
       const dishData = responseData[key];
+      const imageSrc = IMAGES[`${dishData.name}`] || IMAGES.default;
       const reformattedDish = {
         name: dishData.name,
         category: dishData.category,
         healthRating: dishData.healthRating,
         totalCookTime: parseInt(dishData.totalCookTime),
         ingredients: dishData.ingredients,
-        imageSrc: IMAGES[`${dishData.name}`],
+        imageSrc: imageSrc,
         cookingInstructions: dishData.cookingInstructions,
       };
       reformattedDishes.push(reformattedDish);

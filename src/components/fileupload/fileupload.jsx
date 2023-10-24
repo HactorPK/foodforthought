@@ -8,7 +8,9 @@ const ImageUpload = (props) => {
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [responseData, setResponseData] = useState(null);
+  const [error, setError] = useState(null);
   const fileInputRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleImageChange = (e) => {
@@ -54,10 +56,10 @@ const ImageUpload = (props) => {
   const handleSubmit = () => {
     console.log("Text input:", props.textInput);
     if (images.length === 0 && !props.textInput) {
-      console.log("Nothing is there");
+      setError("Please select an image or enter text.");
       return;
     }
-
+    setLoading(true);
     const formData = new FormData();
     images.forEach((image, index) => {
       formData.append(`images`, image.file);
@@ -76,15 +78,19 @@ const ImageUpload = (props) => {
       .then((data) => {
         if (data.success) {
           // Handle the results from the server here
+
           setResponseData(data.results);
           navigate("/recipes", { state: { data: data.results } });
-          console.log(data.results);
+          setError(null);
         } else {
-          console.error(data.error);
+          setError(data.error);
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
+        setError("An error occurred.");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -139,9 +145,16 @@ const ImageUpload = (props) => {
         Choose Image
       </button>
 
+      {loading ? (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    ) : (
       <button className="submit-btn" onClick={() => handleSubmit()}>
         Submit
       </button>
+    )}
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };

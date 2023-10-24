@@ -9,7 +9,7 @@ const title = "Making your life easier, at the tap of a finger!";
 const text =
   "This is how it works, simply upload a picture of your ingredients or write down what ingredients you have and we’ll serve you with three of the best meals you could make with those!";
 const typeIngredients =
-  "Please type in names of ingredients (comma separated) and add it to your list of ingredients. It will be used by our site to generate different recopies you could try out.";
+  "Please type in names of ingredients (comma separated) and add it to your list of ingredients. It will be used by our site to generate different recipies you could try out.";
 const uploadImage =
   "You can choose to take a picture of the ingredients you have , alternatively, upload an existing image.";
 function LandingPage() {
